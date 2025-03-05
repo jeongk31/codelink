@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLink Solutions - Connecting Ideas to Technology</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0066cc;
+        }
+        
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 120px;
+            margin-right: 20px;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #0066cc;
+        }
+        
+        /* Navigation */
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #0066cc;
+        }
+        
+        .nav-btn {
+            background-color: #0066cc;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .nav-btn:hover {
+            background-color: #0055aa;
+            color: white;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e7eb 100%);
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #0066cc;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: #555;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background-color: #0066cc;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .cta-btn:hover {
+            background-color: #0055aa;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #0066cc;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .service-card p {
+            color: #666;
+        }
+        
+        /* Tech Stack Section */
+        .tech-stack {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+        
+        .stack-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stack-category {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stack-category h3 {
+            font-size: 1.3rem;
+            color: #0066cc;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e4e7eb;
+        }
+        
+        .tech-list {
+            list-style: none;
+        }
+        
+        .tech-list li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .tech-list li::before {
+            content: "•";
+            color: #0066cc;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+        }
+        
+        /* Process Section */
+        .process {
+            padding: 80px 0;
+            background-color: #fff;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: "";
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            right: 50px;
+            height: 3px;
+            background-color: #e4e7eb;
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+            max-width: 200px;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background-color: #0066cc;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .step h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #0066cc;
+        }
+        
+        .step p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #e4e7eb 0%, #f5f7fa 100%);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .contact-info {
+            padding-right: 40px;
+        }
+        
+        .contact-info h2 {
+            font-size: 2.2rem;
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 30px;
+            color: #555;
+            font-size: 1.1rem;
+        }
+        
+        .contact-methods {
+            list-style: none;
+        }
+        
+        .contact-methods li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: #0066cc;
+        }
+        
+        .contact-form {
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #0066cc;
+            outline: none;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #0055aa;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-logo img {
+            height: 100px;
+            margin-right: 20px;
+        }
+        
+        .copyright {
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .social-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .social-links li {
+            margin-left: 20px;
+        }
+        
+        .social-links li a {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .social-links li a:hover {
+            color: #0066cc;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .step {
+                margin-bottom: 40px;
+                max-width: 300px;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                padding-right: 0;
+                order: 2;
+            }
+            
+            .contact-form {
+                order: 1;
+                margin-bottom: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+            }
+            
+            nav ul li {
+                margin: 0 15px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-logo {
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+            
+            .social-links {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            .social-links li {
+                margin: 0 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png" alt="CodeLink Solutions Logo">
+                    <!-- <span class="logo-text">CodeLink Solutions</span> -->
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#tech-stack">Tech Stack</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#contact" class="nav-btn">Contact Us</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Connecting Ideas to Technology</h1>
+            <p>We build tailored digital solutions that transform businesses, enhance user experiences, and drive growth through innovative technology integration.</p>
+            <a href="#contact" class="cta-btn">Start Your Project</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We provide comprehensive development services tailored to your specific needs and business goals.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Web Development</h3>
+                    <p>Custom websites and web applications built with modern technologies, focusing on performance, scalability, and user experience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>Mobile Development</h3>
+                    <p>Native and cross-platform mobile applications designed to engage users and streamline operations across all devices.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔌</div>
+                    <h3>API Development</h3>
+                    <p>Robust and secure APIs that enable seamless integration between different systems and services.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>System Integration</h3>
+                    <p>Connect disparate systems and applications to create unified workflows and centralized data management.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">☁️</div>
+                    <h3>Cloud Solutions</h3>
+                    <p>Scalable cloud infrastructure and migration services to enhance reliability, security, and performance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>DevOps</h3>
+                    <p>Streamlined development processes with continuous integration and deployment pipelines for faster delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section id="tech-stack" class="tech-stack">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Tech Stack</h2>
+                <p>We leverage the best technologies to build powerful, scalable, and maintainable solutions.</p>
+            </div>
+            <div class="stack-categories">
+                <div class="stack-category">
+                    <h3>Frontend</h3>
+                    <ul class="tech-list">
+                        <li>React.js</li>
+                        <li>Vue.js</li>
+                        <li>Angular</li>
+                        <li>Next.js</li>
+                        <li>TypeScript</li>
+                        <li>HTML5/CSS3</li>
+                        <li>SASS/LESS</li>
+                        <li>Tailwind CSS</li>
+                    </ul>
+                </div>
+                <div class="stack-category">
+                    <h3>Backend</h3>
+                    <ul class="tech-list">
+                        <li>Node.js</li>
+                        <li>Python (Django, Flask)</li>
+                        <li>Java (Spring)</li>
+                        <li>PHP (Laravel)</li>
+                        <li>.NET Core</li>
+                        <li>Go</li>
+                        <li>Ruby on Rails</li>
+                        <li>GraphQL</li>
+                    </ul>
+                </div>
+                <div class="stack-category">
+                    <h3>Mobile</h3>
+                    <ul class="tech-list">
+                        <li>React Native</li>
+                        <li>Flutter</li>
+                        <li>Swift (iOS)</li>
+                        <li>Kotlin (Android)</li>
+                        <li>Progressive Web Apps</li>
+                    </ul>
+                </div>
+                <div class="stack-category">
+                    <h3>Database</h3>
+                    <ul class="tech-list">
+                        <li>PostgreSQL</li>
+                        <li>MySQL</li>
+                        <li>MongoDB</li>
+                        <li>Redis</li>
+                        <li>Firebase</li>
+                        <li>AWS DynamoDB</li>
+                        <li>Microsoft SQL Server</li>
+                    </ul>
+                </div>
+                <div class="stack-category">
+                    <h3>Cloud & DevOps</h3>
+                    <ul class="tech-list">
+                        <li>AWS</li>
+                        <li>Google Cloud</li>
+                        <li>Microsoft Azure</li>
+                        <li>Docker</li>
+                        <li>Kubernetes</li>
+                        <li>Jenkins</li>
+                        <li>GitHub Actions</li>
+                        <li>Terraform</li>
+                    </ul>
+                </div>
+                <div class="stack-category">
+                    <h3>Tools & Frameworks</h3>
+                    <ul class="tech-list">
+                        <li>Git</li>
+                        <li>JIRA</li>
+                        <li>Confluence</li>
+                        <li>Swagger</li>
+                        <li>Postman</li>
+                        <li>Jest</li>
+                        <li>Cypress</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Development Process</h2>
+                <p>We follow a structured methodology to ensure successful project delivery and client satisfaction.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Discovery</h3>
+                    <p>We analyze your requirements and define the project scope, goals, and technical approach.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Planning</h3>
+                    <p>We create a detailed roadmap with timelines, milestones, and resource allocation.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Design</h3>
+                    <p>We design user-centric interfaces and system architectures aligned with your brand.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Development</h3>
+                    <p>We write clean, efficient code and conduct regular reviews to ensure quality.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Testing</h3>
+                    <p>We rigorously test functionality, performance, and security to eliminate issues.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <h3>Deployment</h3>
+                    <p>We launch your solution and provide post-deployment support and monitoring.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Get In Touch</h2>
+                <p>Ready to start your project? Contact us to discuss your needs and how we can help.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Let's Build Something Amazing Together</h2>
+                    <p>Whether you need a custom web application, mobile app, or integrated system, our team is ready to help you turn your vision into reality.</p>
+                    <ul class="contact-methods">
+                        <li>
+                            <span class="contact-icon">📧</span>
+                            <span>codelinksolutions@gmail.com</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📞</span>
+                            <span>+82 (10) 6452-8574</span>
+                        </li>
+                        <li>
+                            <span class="contact-icon">📍</span>
+                            <span>30, Banpo-daero 10-gil, Seocho-gu, Seoul, Republic of Korea</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.png" alt="CodeLink Solutions Logo">
+                    <!-- <span class="logo-text">CodeLink Solutions</span> -->
+                </div>
+                <p class="copyright">© 2024 CodeLink Solutions. All rights reserved.</p>
+                <ul class="social-links">
+                    <!-- <li><a href="#" aria-label="LinkedIn">LinkedIn</a></li> -->
+                    <!-- <li><a href="#" aria-label="GitHub">GitHub</a></li> -->
+                    <!-- <li><a href="#" aria-label="Twitter">Twitter</a></li> -->
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
